@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Virtual Study Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .primary-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .primary-button:hover {
+            background-color: #0056b3;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #222;
+            margin-bottom: 1.5rem;
+            text-align: left;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.75rem;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .logo-accent {
+            color: #007bff;
+        }
+
+        .main-navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #007bff;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+
+        /* Dashboard Content */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .dashboard-card {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: #222;
+            margin-bottom: 0.75rem;
+        }
+
+        .card-content {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .upcoming-events ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .upcoming-events li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .upcoming-events li:last-child {
+            border-bottom: none;
+        }
+
+        .progress-bar {
+            background-color: #e9ecef;
+            border-radius: 4px;
+            height: 10px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background-color: #007bff;
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 0.25rem;
+            text-align: right;
+        }
+
+        .quick-actions ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .quick-actions li a {
+            display: block;
+            background-color: #f9f9f9;
+            color: #333;
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .quick-actions li a:hover {
+            background-color: #eee;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .social-links li {
+            margin-left: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-navigation {
+                margin-top: 1rem;
+                display: none;
+                width: 100%;
+            }
+
+            .main-navigation.open {
+                display: block;
+            }
+
+            .main-navigation ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
+
+            .nav-item {
+                margin-left: 0;
+                margin-bottom: 0.75rem;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                margin-top: 1rem;
+            }
+
+            .social-links li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+            
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">Virtual <span class="logo-accent">Study Group</span></a>
+            <nav class="main-navigation" id="primary-navigation" aria-expanded="false">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="mentorship.html" class="nav-link">Mentorship</a></li>
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="section-title">Welcome to Your Dashboard</h1>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card upcoming-events">
+                    <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Upcoming Events</h2>
+                    <ul>
+                        <li>Webinar: "Effective Study Techniques" - May 5, 2025 at 7:00 PM IST</li>
+                        <li>Group Study Session: Calculus - May 8, 2025 at 4:00 PM IST</li>
+                        <li>Q&A with a Mentor: Career in Tech - May 12, 2025 at 8:30 PM IST</li>
+                    </ul>
+                    <a href="events.html" class="button primary-button" style="margin-top: 1rem; display: inline-block;">View All Events</a>
+                </div>
+
+                <div class="dashboard-card progress-tracker">
+                    <h2 class="card-title"><i class="fas fa-chart-line"></i> Your Progress</h2>
+                    <div class="progress-item">
+                        <p class="card-content">Mathematics 101</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 65%;"></div>
+                        </div>
+                        <p class="progress-text">65% Complete</p>
+                    </div>
+                    <div class="progress-item">
+                        <p class="card-content">Introduction to Programming</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 30%;"></div>
+                        </div>
+                        <p class="progress-text">30% Complete</p>
+                    </div>
+                    <div class="progress-item">
+                        <p class="card-content">Creative Writing Workshop</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-fill" style="width: 80%;"></div>
+                        </div>
+                        <p class="progress-text">80% Complete</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card quick-actions">
+                    <h2 class="card-title"><i class="fas fa-bolt"></i> Quick Actions</h2>
+                    <ul>
+                        <li><a href="resources.html"><i class="fas fa-book"></i> Access Study Resources</a></li>
+                        <li><a href="community.html"><i class="fas fa-users"></i> Connect with Community</a></li>
+                        <li><a href="mentorship.html"><i class="fas fa-user-tie"></i> Find a Mentor</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Ask a Question</a></li>
+                        <li><a href="#"><i class="fas fa-cog"></i> Account Settings</a></li>
+                    </ul>
+                </div>
+
+                <div class="dashboard-card announcements">
+                    <h2 class="card-title"><i class="fas fa-bullhorn"></i> Announcements</h2>
+                    <p class="card-content">New study resources for Quantum Physics have been added. Check them out in the resources section!</p>
+                    <p class="card-content">Don't forget to register for the upcoming "Time Management for Students" webinar.</p>
+                    <p class="card-content">We've launched a new mentorship matching system. Find your perfect mentor today!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 Virtual Study Group. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.39 5.05 5.05 0 0 0 2.14-2.35 10.92 10.92 0 0 1-3.48 1.32 5.05 5.05 0 0 0-8.79 4.79 14.2 14.2 0 0 1-10.27-5.29 5.06 5.06 0 0 0 1.64 6.74 4.99 4.99 0 0 1-2.25-.62 5.05 5.05 0 0 0 4.05 3.3 5 5 0 0 1-2.17.08 5.07 5.07 0 0 0 4.71 3.45 10.94 10.94 0 0 1-6.93 1.45c0 .68 0 1.36-.03 2.05 10.87 10.87 0 0 0 18.74-8.46 11.13 11.13 0 0 0 1.17-6.68z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.97 3.66 9.11 8.44 9.86v-7H7.07v-2.86h3.37V9.76c0-3.31 1.99-5.12 4.92-5.12 1.43 0 2.67.11 3.04.16v3.36h-2.09c-1.6 0-1.91.77-1.91 1.88v2.46h3.31l-.53 2.86h-2.78v7h5.32c4.78-.75 8.44-4.89 8.44-9.86z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771.997 4.889 1.502.07.347.12.707.12 1.072v12.53c0 .365-.05.725-.12 1.072-.118.505-1.637 1.354-4.889 1.502-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-.997-4.889-1.502-.07-.347-.12-.707-.12-1.072V5.794c0-.365.05-.725.12-1.072.118-.505 1.637-1.354 4.889-1.502 1.266-.058 1.646-.07 4.85-.07m0 2.16c-1.176 0-1.587.006-2.157.036-2.527.138-4.264 1.235-4.384 1.86-.089.475-.14.969-.14 1.472v12.53c0 .503.051.997.14 1.472.119.625 1.857 1.723 4.384 1.86.57.03 1.981.036 2.157.036 1.176 0 1.587-.006 2.157-.036 2.527-.138 4.264-1.235 4.384-1.86.089-.475.14-.969.14-1.472V5.794c0-.503-.051-.997-.14-1.472-.119-.625-1.857-1.723-4.384-1.86-.57-.03-1.981-.036-2.157-.036z"/></svg></a></li>
+            </ul>
+        </div>
+    </footer>

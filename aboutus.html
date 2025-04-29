@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Virtual Study Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .primary-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .primary-button:hover {
+            background-color: #0056b3;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+ ignored
+        /* Header */
+        .site-header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .logo-accent {
+            color: #007bff;
+        }
+
+        .main-navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #007bff;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .about-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .about-content {
+            flex: 2;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .about-title {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        .about-description {
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 4rem 0;
+            background-color: #f9f9f9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .team-details {
+            padding: 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            color: #222;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .social-links li {
+            margin-left: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-navigation {
+                margin-top: 1rem;
+                display: none;
+                width: 100%;
+            }
+
+            .main-navigation.open {
+                display: block;
+            }
+
+            .main-navigation ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
+
+            .nav-item {
+                margin-left: 0;
+                margin-bottom: 0.75rem;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .about-inner {
+                flex-direction: column;
+            }
+
+            .about-content,
+            .about-image {
+                flex: 1;
+            }
+
+            .about-image {
+                margin-top: 2rem;
+            }
+
+            .about-title {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                margin-top: 1rem;
+            }
+
+            .social-links li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">Virtual <span class="logo-accent">Study Group</span></a>
+            <nav class="main-navigation" id="primary-navigation" aria-expanded="false">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="mentorship.html" class="nav-link">Mentorship</a></li>
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="about" class="about-section">
+            <div class="container about-inner">
+                <div class="about-content">
+                    <h1 class="about-title">About Virtual Study Group</h1>
+                    <p class="about-description">
+                        The Virtual Study Group is a global community dedicated to fostering collaborative learning and personal growth. Founded in 2023, our mission is to connect passionate learners from around the world, providing access to high-quality educational resources, expert-led events, and mentorship opportunities. Whether you're a student, professional, or lifelong learner, we offer a supportive environment to explore new subjects, share knowledge, and achieve your goals.
+                    </p>
+                    <a href="dashboard.html" class="button primary-button">Join Our Community</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://i.pinimg.com/736x/8e/f3/6e/8ef36e3d7fecfdf47b93e40ab833d745.jpg" alt="Virtual Study Group Community">
+                </div>
+            </div>
+        </section>
+
+        <section id="team" class="team-section">
+            <div class="container">
+                <h2 class="section-title">Meet Our Team</h2>
+                <div class="team-grid">
+                    <article class="team-card">
+                        <img src="https://media.istockphoto.com/id/1371934584/photo/portrait-of-a-confident-mature-businesswoman-working-in-a-modern-office.jpg?s=612x612&w=0&k=20&c=NF_IO6IEXY3HifRIhRqP0KDFJFdlFwaMwo3zfOOvKnQ=" alt="Susannah Kay" class="team-image">
+                        <div class="team-details">
+                            <h3 class="team-name">Jane Doe</h3>
+                            <p class="team-role">Founder & CEO</p>
+                        </div>
+                    </article>
+                    <article class="team-card">
+                        <img src="https://media.istockphoto.com/id/1413766112/photo/successful-mature-businessman-looking-at-camera-with-confidence.jpg?s=612x612&w=0&k=20&c=NJSugBzNuZqb7DJ8ZgLfYKb3qPr2EJMvKZ21Sj5Sfq4=" alt="John Smith" class="team-image">
+                        <div class="team-details">
+                            <h3 class="team-name">John Smith</h3>
+                            <p class="team-role">Head of Education</p>
+                        </div>
+                    </article>
+                    <article class="team-card">
+                        <img src="https://imageio.forbes.com/specials-images/imageserve/653651737/960x0.jpg?height=473&width=711&fit=bounds" alt="Emily Chen" class="team-image">
+                        <div class="team-details">
+                            <h3 class="team-name">Emily Chen</h3>
+                            <p class="team-role">Community Manager</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 Virtual Study Group. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.39 5.05 5.05 0 0 0 2.14-2.35 10.92 10.92 0 0 1-3.48 1.32 5.05 5.05 0 0 0-8.79 4.79 14.2 14.2 0 0 1-10.27-5.29 5.06 5.06 0 0 0 1.64 6.74 4.99 4.99 0 0 1-2.25-.62 5.05 5.05 0 0 0 4.05 3.3 5 5 0 0 1-2.17.08 5.07 5.07 0 0 0 4.71 3.45 10.94 10.94 0 0 1-6.93 1.45c0 .68 0 1.36-.03 2.05 10.87 10.87 0 0 0 18.74-8.46 11.13 11.13 0 0 0 1.17-6.68z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.97 3.66 9.11 8.44 9.86v-7H7.07v-2.86h3.37V9.76c0-3.31 1.99-5.12 4.92-5.12 1.43 0 2.67.11 3.04.16v3.36h-2.09c-1.6 0-1.91.77-1.91 1.88v2.46h3.31l-.53 2.86h-2.78v7h5.32c4.78-.75 8.44-4.89 8.44-9.86z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771.997 4.889 1.502.07.347.12.707.12 1.072v12.53c0 .365-.05.725-.12 1.072-.118.505-1.637 1.354-4.889 1.502-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-.997-4.889-1.502-.07-.347-.12-.707-.12-1.072V5.762c0-.365.05-.725.12-1.072.118-.505 1.637-1.354 4.889-1.502 1.266-.058 1.646-.07 4.85-.07m0 2.16c-3.217 0-3.597.01-4.857.06-2.757.126-4.097 1.142-4.11 1.847-.03.67.016 1.305.127 1.907.248 1.346.972 2.48 1.94 3.47a12.13 12.13 0 0 0 3.47 1.94c.602.11 1.237.157 1.907.127.705-.013 1.72-.63 1.847-4.11.05-.66.06-1.287.06-4.857s-.01-3.597-.06-4.857c-.127-2.757-1.143-4.097-1.847-4.11-.67-.03-1.305.016-1.907.127a12.13 12.13 0 0 0-3.47 1.94c-.99 1.01-1.714 2.144-1.94 3.47-.11.67-.157 1.305-.127 1.907.013.705.63 1.72 4.11 1.847.66.05 1.287.06 4.857.06zm0 5.838a3.4 3.4 0 1 1 0 6.8 3.4 3.4 0 0 1 0-6.8zm2.032 1.122a.8.8 0 1 0-.001 1.594.8.8 0 0 0 0-1.594"/></svg></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Navigation Toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const primaryNavigation = document.querySelector('.main-navigation');
+
+            if (mobileNavToggle && primaryNavigation) {
+                mobileNavToggle.addEventListener('click', () => {
+                    const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+                    mobileNavToggle.classList.toggle('open');
+                    mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+                    primaryNavigation.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
