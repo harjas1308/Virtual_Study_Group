@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Bootcamp - Virtual Study Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       /* styles.css */
+
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.primary-button {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.primary-button:hover {
+    background-color: #0056b3;
+}
+
+.secondary-button {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.secondary-button:hover {
+    background-color: #e0e0e0;
+}
+
+.large-button {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Header */
+.site-header {
+    background-color: #fff;
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none;
+}
+
+.logo-accent {
+    color: #007bff;
+}
+
+.main-navigation ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 1.5rem;
+}
+
+.nav-link {
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #007bff;
+}
+
+.mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-nav-toggle.open .hamburger:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle.open .hamburger:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-nav-toggle.open .hamburger:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.visually-hidden {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* Hero Section (Specific to this page) */
+.hero-section {
+    padding: 4rem 0;
+    background-color: #e0f7fa; /* A light teal for coding */
+}
+
+.hero-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.hero-title {
+    font-size: 3rem;
+    color: #00838f; /* A darker teal */
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #4db6ac;
+    margin-bottom: 2rem;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Featured Section */
+.featured-section {
+    padding: 4rem 0;
+    background-color: #fff;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease-in-out;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+}
+
+.event-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+.event-details {
+    padding: 1.5rem;
+}
+
+.event-title {
+    font-size: 1.5rem;
+    color: #222;
+    margin-bottom: 0.5rem;
+}
+
+.event-description {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* Instructors Section (Specific to this page) */
+#instructors {
+    background-color: #f9f9f9;
+}
+
+/* Registration Section */
+.registration-section {
+    padding: 4rem 0;
+    background-color: #fff;
+}
+
+.registration-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.input-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.input-field:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.error {
+    color: #dc3545; /* Red color for error messages */
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Related Resources Section */
+#related-resources {
+    background-color: #f9f9f9;
+}
+
+/* Call to Action Section */
+.cta-section {
+    padding: 5rem 0;
+    background-color: #e9ecef;
+    text-align: center;
+}
+
+.cta-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 1rem;
+}
+
+.cta-text {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.social-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.social-links li {
+    margin-left: 1rem;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 1;
+}
+
+.social-links svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-navigation {
+        margin-top: 1rem;
+        display: none;
+        width: 100%;
+    }
+
+    .main-navigation.open {
+        display: block;
+    }
+
+    .main-navigation ul {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    .nav-item {
+        margin-left: 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    .hero-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .hero-image {
+        margin-top: 2rem;
+    }
+
+    .event-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-inner {
+        text-align: center;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .social-links {
+        margin-top: 1rem;
+    }
+
+    .social-links li {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">Virtual <span class="logo-accent">Study Group</span></a>
+            <nav class="main-navigation" id="primary-navigation" aria-expanded="false">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="events.html" class="nav-link active">Events</a></li>
+                    <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="mentorship.html" class="nav-link">Mentorship</a></li>
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="hero" class="hero-section">
+            <div class="container hero-inner">
+                <div class="hero-content">
+                    <h1 class="hero-title">Coding Bootcamp: Kickstart Your Future</h1>
+                    <p class="hero-subtitle">Join our intensive Python bootcamp on May 20, 2025, at 10:00 AM EST!</p>
+                    <a href="#register" class="button primary-button">Register Now</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://www.dice.com/binaries/content/gallery/dice/insights/2019/01/Bootcamp-MOOC-Learning-Tech-Coding-Programming-Dice-1024x640.png" alt="Coding Bootcamp Event">
+                </div>
+            </div>
+        </section>
+
+        <section id="event-details" class="featured-section">
+            <div class="container">
+                <h2 class="section-title">Event Details</h2>
+                <div class="event-grid">
+                    <article class="event-card">
+                        <div class="event-details">
+                            <h3 class="event-title">What You'll Learn</h3>
+                            <p class="event-description">This bootcamp focuses on Python, covering fundamental syntax, data structures, object-oriented programming, and practical project development.</p>
+                        </div>
+                    </article>
+                    <article class="event-card">
+                        <div class="event-details">
+                            <h3 class="event-title">Hands-on Projects</h3>
+                            <p class="event-description">Work on real-world coding projects, building a portfolio to showcase your new skills.</p>
+                        </div>
+                    </article>
+                    <article class="event-card">
+                        <div class="event-details">
+                            <h3 class="event-title">Who Should Attend</h3>
+                            <p class="event-description">Beginners with no prior coding experience and individuals looking to enhance their programming skills in Python.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="instructors" class="featured-section" style="background-color: #f9f9f9;">
+            <div class="container">
+                <h2 class="section-title">Meet Your Instructors</h2>
+                <div class="event-grid">
+                    <article class="event-card">
+                        <img src="https://media.screenpal.com/blog/wp-content/uploads/2020/02/21054807/videos-teachers-768x432.jpg" alt="Alex M." class="event-image">
+                        <div class="event-details">
+                            <h3 class="event-title">Alex M.</h3>
+                            <p class="event-description">Experienced software engineer with over 10 years in Python development and education.</p>
+                        </div>
+                    </article>
+                    <article class="event-card">
+                        <img src="https://www.workitdaily.com/media-library/image.jpg?id=19296355&width=980&quality=85" alt="Priya S." class="event-image">
+                        <div class="event-details">
+                            <h3 class="event-title">Priya S.</h3>
+                            <p class="event-description">Passionate coding instructor specializing in making complex concepts accessible to beginners.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="register" class="featured-section">
+            <div class="container">
+                <h2 class="section-title">Register for the Bootcamp</h2>
+                <div class="max-w-lg mx-auto">
+                    <div class="space-y-4" id="register-form">
+                        <div>
+                            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                            <input type="text" id="name" placeholder="Your Full Name" class="input-field">
+                            <p class="error text-red-500 text-sm hidden" id="name-error">Please enter your name</p>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                            <input type="email" id="email" placeholder="Your Email Address" class="input-field">
+                            <p class="error text-red-500 text-sm hidden" id="email-error">Please enter a valid email</p>
+                        </div>
+                        <div>
+                            <label for="comments" class="block text-gray-700 text-sm font-bold mb-2">Comments or Questions (Optional)</label>
+                            <textarea id="comments" placeholder="Your comments or questions" class="input-field"></textarea>
+                        </div>
+                        <button class="button primary-button w-full" id="submit-button">Submit Registration</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="related-resources" class="featured-section" style="background-color: #f9f9f9;">
+            <div class="container">
+                <h2 class="section-title">Related Resources</h2>
+                <div class="event-grid">
+                    <article class="event-card">
+                        <img src="https://beecrowd.com/wp-content/uploads/2024/04/2022-07-19-Melhores-cursos-de-Python.jpg" alt="Python Basics Guide" class="event-image">
+                        <div class="event-details">
+                            <h3 class="event-title">Python Basics Guide</h3>
+                            <p class="event-description">A comprehensive guide to the fundamentals of Python programming.</p>
+                            <a href="resources.html" class="button secondary-button">View Resource</a>
+                        </div>
+                    </article>
+                    <article class="event-card">
+                        <img src="https://file.mockplus.com/image/2018/12/ff46d495-3053-4039-9f2c-92d83f8f796d.png" alt="Online Coding Platforms" class="event-image">
+                        <div class="event-details">
+                            <h3 class="event-title">Top Online Coding Platforms</h3>
+                            <p class="event-description">Explore platforms for practicing and improving your coding skills.</p>
+                            <a href="resources.html" class="button secondary-button">View Resource</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="text-center mt-6">
+                    <a href="resources.html" class="button primary-button">Explore All Resources</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="call-to-action" class="cta-section">
+            <div class="container cta-inner">
+                <h2 class="cta-title">Ready to Transform Your Career?</h2>
+                <p class="cta-text">Discover more opportunities to learn and grow with our virtual study groups.</p>
+                <a href="events.html" class="button primary-button large-button">See All Events</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 Virtual Study Group. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.39 5.05 5.05 0 0 0 2.14-2.35 10.92 10.92 0 0 1-3.48 1.32 5.05 5.05 0 0 0-8.79 4.79 14.2 14.2 0 0 1-10.27-5.29 5.06 5.06 0 0 0 1.64 6.74 4.99 4.99 0 0 1-2.25-.62 5.05 5.05 0 0 0 4.05 3.3 5 5 0 0 1-2.17.08 5.07 5.07 0 0 0 4.71 3.45 10.94 10.94 0 0 1-6.93 1.45c0 .68 0 1.36-.03 2.05 10.87 10.87 0 0 0 18.74-8.46 11.13 11.13 0 0 0 1.17-6.68z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.97 3.66 9.11 8.44 9.86v-7H7.07v-2.86h3.37V9.76c0-3.31 1.99-5.12 4.92-5.12 1.43 0 2.67.11 3.04.16v3.36h-2.09c-1.6 0-1.91.77-1.91 1.88v2.46h3.31l-.53 2.86h-2.78v7h5.32c4.78-.75 8.44-4.89 8.44-9.86z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771.997 4.889 1.502.07.347.12.707.12 1.072v12.53c0 .365-.05.725-.12 1.072-.118.505-1.637 1.354-4.889 1.502-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-.997-4.889-1.502-.07-.347-.12-.707-.12-1.072V5.762c0-.365.05-.725.12-1.072.118-.505 1.637-1.354 4.889-1.502 1.266-.058 1.646-.07 4.85-.07m0 2.16c-3.217 0-3.597.01-4.857.06-2.757.126-4.097 1.142-4.11 1.847-.03.67.016 1.305.127 1.907.248 1.346.972 2.48 1.94 3.47a12.13 12.13 0 0 0 3.47 1.94c.602.11 1.237.157 1.907.127.705-.013 1.72-.63 1.847-4.11.05-.66.06-1.287.06-4.857s-.01-3.597-.06-4.857c-.127-2.757-1.143-4.097-1.847-4.11-.67-.03-1.305.016-1.907.127a12.13 12.13 0 0 0-3.47 1.94c-.99 1.01-1.714 2.144-1.94 3.47-.11.67-.157 1.305-.127 1.907.013.705.63 1.72 4.11 1.847.66.05 1.287.06 4.857.06zm0 5.838a3.4 3.4 0 1 1 0 6.8 3.4 3.4 0 0 1 0-6.8zm2.032 1.122a.8.8 0 1 0-.001 1.594.8.8 0 0 0 0-1.594"/></svg></a></li>
+                </ul>
+            </div>
+        </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth Scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const target = document.querySelector(anchor.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // Mobile Navigation Toggle
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const primaryNavigation = document.querySelector('.main-navigation');
+
+            if (mobileNavToggle && primaryNavigation) {
+                mobileNavToggle.addEventListener('click', () => {
+                    const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+                    mobileNavToggle.classList.toggle('open');
+                    mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+                    primaryNavigation.classList.toggle('open');
+                });
+            }
+
+            // Button Navigation for Registration
+            const primaryButtons = document.querySelectorAll('.primary-button');
+            primaryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    if (button.href) {
+                        window.location.href = button.href;
+                    } else if (button.id === 'submit-button') {
+                        const form = document.getElementById('register-form');
+                        if (form) {
+                            const nameInput = document.getElementById('name');
+                            const emailInput = document.getElementById('email');
+                            const nameError = document.getElementById('name-error');
+                            const emailError = document.getElementById('email-error');
+                            let hasErrors = false;
+
+                            nameError.classList.add('hidden');
+                            emailError.classList.add('hidden');
+
+                            if (!nameInput.value.trim()) {
+                                nameError.textContent = 'Please enter your name';
+                                nameError.classList.remove('hidden');
+                                hasErrors = true;
+                            }
+
+                            const emailRegex = /\S+@\S+\.\S+/;
+                            if (!emailInput.value.trim()) {
+                                emailError.textContent = 'Please enter a valid email';
+                                emailError.classList.remove('hidden');
+                                hasErrors = true;
+                            } else if (!emailRegex.test(emailInput.value.trim())) {
+                                emailError.textContent = 'Please enter a valid email';
+                                emailError.classList.remove('hidden');
+                                hasErrors = true;
+                            }
+
+                            if (!hasErrors) {
+                                alert(`Thank you, ${nameInput.value.trim()}! You have registered for the Coding Bootcamp event. A confirmation email will be sent to ${emailInput.value.trim()}.`);
+                                nameInput.value = '';
+                                emailInput.value = '';
+                                const commentsInput = document.getElementById('comments');
+                                if (commentsInput) {
+                                    commentsInput.value = '';
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
