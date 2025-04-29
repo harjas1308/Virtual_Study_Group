@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship - Virtual Study Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .primary-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .primary-button:hover {
+            background-color: #0056b3;
+        }
+
+        .secondary-button {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .secondary-button:hover {
+            background-color: #545b62;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .logo-accent {
+            color: #007bff;
+        }
+
+        .main-navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #007bff;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+
+        /* Mentorship Section */
+        .mentorship-section {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .mentorship-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .mentorship-intro p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .mentorship-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .option-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+
+        .option-title {
+            font-size: 1.5rem;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        .option-description {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .apply-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .become-mentor-section {
+            background-color: #e9ecef;
+            padding: 3rem 0;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .become-mentor-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .become-mentor-description {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .social-links li {
+            margin-left: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-navigation {
+                margin-top: 1rem;
+                display: none;
+                width: 100%;
+            }
+
+            .main-navigation.open {
+                display: block;
+            }
+
+            .main-navigation ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
+
+            .nav-item {
+                margin-left: 0;
+                margin-bottom: 0.75rem;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .mentorship-options {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                margin-top: 1rem;
+            }
+
+            .social-links li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">Virtual <span class="logo-accent">Study Group</span></a>
+            <nav class="main-navigation" id="primary-navigation" aria-expanded="false">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="mentorship.html" class="nav-link active">Mentorship</a></li>
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="mentorship" class="mentorship-section">
+            <div class="container">
+                <h1 class="section-title">Unlock Your Potential with Mentorship</h1>
+                <div class="mentorship-intro">
+                    <p>
+                        Our mentorship program connects learners with experienced mentors who can provide guidance, support, and insights to help you achieve your academic and professional goals. Whether you're seeking advice on study strategies, career paths, or personal development, our mentors are here to empower you.
+                    </p>
+                    <p>
+                        Explore the different mentorship options available and find the one that best suits your needs. Take the next step in your learning journey with personalized mentorship.
+                    </p>
+                </div>
+
+                <div class="mentorship-options">
+                    <div class="option-card">
+                        <i class="fas fa-user-graduate option-icon"></i>
+                        <h3 class="option-title">One-on-One Mentoring</h3>
+                        <p class="option-description">
+                            Receive personalized guidance from an experienced mentor in your field of interest. Benefit from tailored advice and support to overcome challenges and reach your full potential.
+                        </p>
+                        <a href="#" class="apply-button primary-button">Apply for a Mentor</a>
+                    </div>
+
+                    <div class="option-card">
+                        <i class="fas fa-users option-icon"></i>
+                        <h3 class="option-title">Group Mentoring Sessions</h3>
+                        <p class="option-description">
+                            Participate in group sessions led by mentors, where you can learn from their experiences and interact with other mentees in a collaborative environment.
+                        </p>
+                        <a href="#" class="apply-button primary-button">Join a Group Session</a>
+                    </div>
+
+                    <div class="option-card">
+                        <i class="fas fa-briefcase option-icon"></i>
+                        <h3 class="option-title">Career Mentorship</h3>
+                        <p class="option-description">
+                            Connect with professionals in your desired career path for advice on job searching, networking, and career development strategies.
+                        </p>
+                        <a href="#" class="apply-button primary-button">Explore Career Mentors</a>
+                    </div>
+
+                    <div class="option-card">
+                        <i class="fas fa-graduation-cap option-icon"></i>
+                        <h3 class="option-title">Academic Mentorship</h3>
+                        <p class="option-description">
+                            Get support from experienced students or alumni to navigate your academic journey, choose courses, and develop effective study habits.
+                        </p>
+                        <a href="#" class="apply-button primary-button">Find an Academic Mentor</a>
+                    </div>
+                </div>
+
+                <div class="become-mentor-section">
+                    <h2 class="become-mentor-title">Become a Mentor</h2>
+                    <p class="become-mentor-description">
+                        Share your expertise and make a difference in the lives of fellow learners. If you're passionate about guiding others and helping them succeed, consider becoming a mentor in our community.
+                    </p>
+                    <a href="#" class="button secondary-button">Become a Mentor</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 Virtual Study Group. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.39 5.05 5.05 0 0 0 2.14-2.35 10.92 10.92 0 0 1-3.48 1.32 5.05 5.05 0 0 0-8.79 4.79 14.2 14.2 0 0 1-10.27-5.29 5.06 5.06 0 0 0 1.64 6.74 4.99 4.99 0 0 1-2.25-.62 5.05 5.05 0 0 0 4.05 3.3 5 5 0 0 1-2.17.08 5.07 5.07 0 0 0 4.71 3.45 10.94 10.94 0 0 1-6.93 1.45c0 .68 0 1.36-.03 2.05 10.87 10.87 0 0 0 18.74-8.46 11.13 11.13 0 0 0 1.17-6.68z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2
