@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Mentor - Virtual Study Group</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease; /* Subtle transition for the body */
+        }
+
+        body.submitted {
+            background-color: #e6f7ff; /* Very light blue on submission */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .primary-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .primary-button:hover {
+            background-color: #0056b3;
+        }
+
+        .secondary-button {
+            background-color: #6c757d;
+            color: #fff;
+        }
+
+        .secondary-button:hover {
+            background-color: #545b62;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #222;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .logo-accent {
+            color: #007bff;
+        }
+
+        .main-navigation ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-left: 1.5rem;
+        }
+
+        .nav-link {
+            color: #555;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #007bff;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 5px 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.open .hamburger:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        .visually-hidden {
+            position: absolute !important;
+            height: 1px;
+            width: 1px;
+            overflow: hidden;
+            clip: rect(1px, 1px, 1px, 1px);
+            white-space: nowrap;
+        }
+
+        /* Become a Mentor Section */
+        .become-a-mentor-page {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+
+        .become-mentor-intro {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .become-mentor-intro p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .mentor-qualifications {
+            margin-bottom: 3rem;
+        }
+
+        .mentor-qualifications h2 {
+            font-size: 2rem;
+            color: #222;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .qualifications-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .qualification-item {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .qualification-item h3 {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .qualification-item p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .application-form {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        .application-form h2 {
+            font-size: 2rem;
+            color: #222;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif; /* Consistent font */
+            transition: border-color 0.3s ease; /* Subtle transition for input focus */
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #007bff; /* Subtle blue highlight on focus */
+            outline: none;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="%23333" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 15px;
+        }
+
+        .submit-button-container {
+            text-align: center;
+        }
+
+        .submit-button {
+            padding: 12px 30px;
+            font-size: 1.1rem;
+        }
+
+        .submission-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: none; /* Hidden by default */
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .social-links li {
+            margin-left: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-navigation {
+                margin-top: 1rem;
+                display: none;
+                width: 100%;
+            }
+
+            .main-navigation.open {
+                display: block;
+            }
+
+            .main-navigation ul {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+            }
+
+            .nav-item {
+                margin-left: 0;
+                margin-bottom: 0.75rem;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .mentorship-options {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-links {
+                margin-top: 1rem;
+            }
+
+            .social-links li {
+                margin-left: 0.5rem;
+                margin-right: 0.5rem;
+            }
+
+            .qualifications-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="/" class="logo">Virtual <span class="logo-accent">Study Group</span></a>
+            <nav class="main-navigation" id="primary-navigation" aria-expanded="false">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
+                    <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
+                    <li class="nav-item"><a href="mentorship.html" class="nav-link">Mentorship</a></li>
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                <span class="visually-hidden">Menu</span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content become-a-mentor-page">
+        <section class="container">
+            <h1 class="section-title">Become a Mentor</h1>
+            <div class="become-mentor-intro">
+                <p>
+                    Passionate about sharing your knowledge and experience? Want to make a positive impact on the learning journey of others? Become a mentor at Virtual Study Group and help shape the future of our community.
+                </p>
+                <p>
+                    Mentoring is a rewarding experience that allows you to guide, support, and inspire learners as they navigate their academic and professional paths. Share your insights, provide valuable advice, and contribute to a thriving learning environment.
+                </p>
+            </div>
+
+            <div class="mentor-qualifications">
+                <h2>What We Look For in a Mentor</h2>
+                <ul class="qualifications-list">
+                    <li class="qualification-item">
+                        <h3>Expertise & Experience</h3>
+                        <p>Possess significant knowledge and practical experience in a relevant field or subject area.</p>
+                    </li>
+                    <li class="qualification-item">
+                        <h3>Passion for Guiding Others</h3>
+                        <p>A genuine interest in helping learners grow and achieve their goals.</p>
+                    </li>
+                    <li class="qualification-item">
+                        <h3>Strong Communication Skills</h3>
+                        <p>Ability to articulate ideas clearly, listen actively, and provide constructive feedback.</p>
+                    </li>
+                    <li class="qualification-item">
+                        <h3>Commitment & Reliability</h3>
+                        <p>Willingness to dedicate time and effort to mentor mentees effectively.</p>
+                    </li>
+                    <li class="qualification-item">
+                        <h3>Positive Attitude</h3>
+                        <p>An encouraging and supportive approach to mentorship.</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="application-form">
+                <h2>Mentor Application Form</h2>
+                <form id="mentorApplicationForm" action="/submit-mentor-application" method="post">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="expertise">Area(s) of Expertise:</label>
+                        <input type="text" id="expertise" name="expertise" placeholder="e.g., Web Development, Physics, Career Advice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Relevant Experience:</label>
+<textarea id="experience" name="experience" rows="5" placeholder="Please describe your experience and why you'd be a great mentor." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="mentoring_approach">Your Mentoring Approach:</label>
+                        <textarea id="mentoring_approach" name="mentoring_approach" rows="4" placeholder="How would you approach mentoring others?" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="availability">Availability:</label>
+                        <input type="text" id="availability" name="availability" placeholder="e.g., 2 hours per week, weekends" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile (Optional):</label>
+                        <input type="text" id="linkedin" name="linkedin" placeholder="Your LinkedIn URL">
+                    </div>
+                    <div class="submit-button-container">
+                        <button type="submit" class="button primary-button submit-button">Submit Application</button>
+                    </div>
+                </form>
+                <div id="submissionSuccessMessage" class="submission-message">
+                    Thank you! Your application to become a mentor has been submitted successfully. We will review it and get back to you soon.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>© 2025 Virtual Study Group. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.39 5.05 5.05 0 0 0 2.14-2.35 10.92 10.92 0 0 1-3.48 1.32 5.05 5.05 0 0 0-8.79 4.79 14.2 14.2 0 0 1-10.27-5.29 5.06 5.06 0 0 0 1.64 6.74 4.99 4.99 0 0 1-2.25-.62 5.05 5.05 0 0 0 4.05 3.3 5 5 0 0 1-2.17.08 5.07 5.07 0 0 0 4.71 3.45 10.94 10.94 0 0 1-6.93 1.45c0 .68 0 1.36-.03 2.05 10.87 10.87 0 0 0 18.74-8.46 11.13 11.13 0 0 0 1.17-6.68z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.97 3.66 9.11 8.44 9.86v-7H7.07v-2.86h3.37V9.76c0-3.31 1.99-5.12 4.92-5.12 1.43 0 2.67.11 3.04.16v3.36h-2.09c-1.6 0-1.91.77-1.91 1.88v2.46h3.31l-.53 2.86h-2.78v7h5.32c4.78-.75 8.44-4.89 8.44-9.86z"/></svg></a></li>
+                <li><a href="#" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771.997 4.889 1.502.07.347.12.707.12 1.072v12.53c0 .365-.05.725-.12 1.072-.118.505-1.637 1.354-4.889 1.502-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-.997-4.889-1.502-.07-.347-.12-.707-.12-1.072V5.794c0-.365.05-.725.12-1.072.118-.505 1.637-1.354 4.889-1.502 1.266-.058 1.646-.07 4.85-.07m0 2.16c-1.176 0-1.587.006-2.157.036-2.527.138-4.264 1.235-4.384 1.86-.089.475-.14.969-.14 1.472v12.53c0 .503.051.997.14 1.472.119.625 1.857 1.723 4.384 1.86.57.03 1.981.036 2.157.036 1.176 0 1.587-.006 2.157-.036 2.527-.138 4.264-1.235 4.384-1.86.089-.475.14-.969.14-1.472V5.794c0-.503-.051-.997-.14-1.472-.119-.625-1.857-1.723-4.384-1.86-.57-.03-1.981-.036-2.157-.036z"/></svg></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('mentorApplicationForm');
+            const successMessage = document.getElementById('submissionSuccessMessage');
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                // Simulate form submission (replace with your actual submission logic)
+                setTimeout(function() {
+                    form.style.display = 'none'; // Hide the form
+                    successMessage.style.display = 'block'; // Show the success message
+                    document.body.classList.add('submitted'); // Add the submitted class for the blue background
+                }, 1000); // Simulate a 1-second submission process
+            });
+        });
+    </script>
+</body>
+</html>
