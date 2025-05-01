@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community - Virtual Study Group</title>
+    <title>Resources - Virtual Study Group</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,33 +18,13 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        .primary-button {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .primary-button:hover {
-            background-color: #0056b3;
         }
 
         .section-title {
@@ -142,58 +122,80 @@
             white-space: nowrap;
         }
 
-        /* Community Section */
-        .community-section {
+        /* Resources Section */
+        .resources-section {
             padding: 4rem 0;
             background-color: #fff;
         }
 
-        .community-intro {
+        .resources-intro {
             text-align: center;
             margin-bottom: 3rem;
         }
 
-        .community-intro p {
+        .resources-intro p {
             color: #555;
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
         }
 
-        .community-features {
+        .resource-categories {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
 
-        .feature-card {
+        .resource-category {
             background-color: #f9f9f9;
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 2rem;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
-            text-align: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
-        .feature-icon {
+        .resource-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
             font-size: 2rem;
             color: #007bff;
             margin-bottom: 1rem;
         }
 
-        .feature-title {
-            font-size: 1.25rem;
-            color: #222;
+        .category-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .category-description {
+            color: #555;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        .resource-item {
             margin-bottom: 0.75rem;
         }
 
-        .feature-description {
-            color: #555;
-            font-size: 0.9rem;
+        .resource-link {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
         }
 
-        .join-community {
-            text-align: center;
+        .resource-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
         }
 
         /* Footer */
@@ -274,7 +276,7 @@
                 display: block;
             }
 
-            .community-features {
+            .resource-categories {
                 grid-template-columns: 1fr;
             }
 
@@ -301,11 +303,11 @@
             <a href="/" class="logo">Virtual <span class="logo-accent">Study Group</span></a>
             <nav class="main-navigation" id="primary-navigation" aria-expanded="false">
                 <ul class="nav-list">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="events.html" class="nav-link">Events</a></li>
-                    <li class="nav-item"><a href="resources.html" class="nav-link">Resources</a></li>
-                    <li class="nav-item"><a href="community.html" class="nav-link active">Community</a></li>
+                    <li class="nav-item"><a href="homepage.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="event.html" class="nav-link">Events</a></li>
+                    <li class="nav-item"><a href="resources.html" class="nav-link active">Resources</a></li>
+                    <li class="nav-item"><a href="community.html" class="nav-link">Community</a></li>
                     <li class="nav-item"><a href="mentorship.html" class="nav-link">Mentorship</a></li>
                     <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
@@ -320,63 +322,96 @@
         </div>
     </header>
 
-    <main class="main-content">
-        <section id="community" class="community-section">
-            <div class="container">
-                <h1 class="section-title">Join Our Vibrant Learning Community</h1>
-                <div class="community-intro">
-                    <p>
-                        Connect with fellow learners from around the globe! Our community is a supportive and collaborative space where you can share ideas, ask questions, discuss topics, and grow together. Whether you're looking for study partners, project collaborators, or just a place to connect with like-minded individuals, you've found the right place.
-                    </p>
-                    <p>
-                        Engage in discussions, participate in group studies, and build lasting connections that will enhance your learning experience. We believe that learning is better together!
-                    </p>
-                </div>
+<main class="main-content resources-section">
+    <section class="container">
+        <h1 class="section-title">Explore Our Learning Resources</h1>
+        <div class="resources-intro">
+            <p>
+                Welcome to the resources section! Here you'll find a curated collection of materials, tools, and links to help you in your studies and personal growth. Browse through the categories below to discover valuable content.
+            </p>
+        </div>
 
-                <div class="community-features">
-                    <div class="feature-card">
-                        <i class="fas fa-users feature-icon"></i>
-                        <h3 class="feature-title">Connect with Peers</h3>
-                        <p class="feature-description">
-                            Find and connect with other learners who share your interests and goals. Build your network and learn from diverse perspectives.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fas fa-comments feature-icon"></i>
-                        <h3 class="feature-title">Engage in Discussions</h3>
-                        <p class="feature-description">
-                            Participate in lively discussions on various subjects, share your insights, and ask for help when you need it.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fas fa-book-open feature-icon"></i>
-                        <h3 class="feature-title">Collaborative Study Groups</h3>
-                        <p class="feature-description">
-                            Form or join study groups focused on specific courses or topics. Learn together and support each other's progress.
-                        </p>
-                    </div>
-
-                    <div class="feature-card">
-                        <i class="fas fa-lightbulb feature-icon"></i>
-                        <h3 class="feature-title">Share Ideas & Resources</h3>
-                        <p class="feature-description">
-                            Contribute your knowledge and share valuable resources, helping the entire community grow and learn.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="join-community">
-                    <h2>Ready to be part of our community?</h2>
-                    <p style="color: #555; margin-bottom: 1.5rem;">
-                        Click the button below to join our platform and start connecting with fellow learners today!
-                    </p>
-                    <a href="dashboard.html" class="button primary-button">Join the Community</a>
-                </div>
+        <div class="resource-categories">
+            <div class="resource-category">
+                <i class="fas fa-book category-icon"></i>
+                <h2 class="category-title">Study Guides</h2>
+                <p class="category-description">
+                    Comprehensive guides covering various subjects and topics to aid your understanding and exam preparation.
+                </p>
+                <ul class="resource-list">
+                    <li class="resource-item"><a href="#" class="resource-link">Mathematics Basics</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Introduction to Programming</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Effective Note-Taking Strategies</a></li>
+                </ul>
             </div>
-        </section>
-    </main>
+
+            <div class="resource-category">
+                <i class="fas fa-video category-icon"></i>
+                <h2 class="category-title">Video Tutorials</h2>
+                <p class="category-description">
+                    Engaging video lessons and explanations to visualize concepts and enhance your learning experience.
+                </p>
+                <ul class="resource-list">
+                    <li class="resource-item"><a href="#" class="resource-link">Calculus Made Easy (Video Series)</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Web Development Fundamentals</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Time Management Techniques</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-category">
+                <i class="fas fa-tools category-icon"></i>
+                <h2 class="category-title">Learning Tools</h2>
+                <p class="category-description">
+                    Useful tools and applications to boost your productivity, organization, and study efficiency.
+                </p>
+                <ul class="resource-list">
+                    <li class="resource-item"><a href="#" class="resource-link">Online Flashcard Maker</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Collaborative Mind Mapping Tool</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Citation Generator</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-category">
+                <i class="fas fa-link category-icon"></i>
+                <h2 class="category-title">External Resources</h2>
+                <p class="category-description">
+                    Links to valuable external websites, educational platforms, and reputable sources for further exploration.
+                </p>
+                <ul class="resource-list">
+                    <li class="resource-item"><a href="https://www.khanacademy.org/" class="resource-link" target="_blank">Khan Academy</a></li>
+                    <li class="resource-item"><a href="https://www.coursera.org/" class="resource-link" target="_blank">Coursera</a></li>
+                    <li class="resource-item"><a href="https://www.edx.org/" class="resource-link" target="_blank">edX</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-category">
+                <i class="fas fa-podcast category-icon"></i>
+                <h2 class="category-title">Podcasts</h2>
+                <p class="category-description">
+                    Listen to insightful discussions and expert opinions on a variety of educational and career-related topics.
+                </p>
+                <ul class="resource-list">
+                    <li class="resource-item"><a href="#" class="resource-link">The History of Everything Podcast</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Learn to Code With Me</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Science Friday</a></li>
+                </ul>
+            </div>
+
+            <div class="resource-category">
+                <i class="fas fa-graduation-cap category-icon"></i>
+                <h2 class="category-title">Academic Papers</h2>
+                <p class="category-description">
+                    Access a collection of research papers and scholarly articles for in-depth study and reference.
+                </p>
+                <ul class="resource-list">
+                    <li class="resource-item"><a href="#" class="resource-link">Foundational Papers in Computer Science</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Key Studies in Psychology</a></li>
+                    <li class="resource-item"><a href="#" class="resource-link">Seminal Works in Literature</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
 
     <footer class="site-footer">
         <div class="container footer-inner">
@@ -384,4 +419,23 @@
             <ul class="social-links">
                 <li><a href="#" aria-label="Follow us on Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.39 5.05 5.05 0 0 0 2.14-2.35 10.92 10.92 0 0 1-3.48 1.32 5.05 5.05 0 0 0-8.79 4.79 14.2 14.2 0 0 1-10.27-5.29 5.06 5.06 0 0 0 1.64 6.74 4.99 4.99 0 0 1-2.25-.62 5.05 5.05 0 0 0 4.05 3.3 5 5 0 0 1-2.17.08 5.07 5.07 0 0 0 4.71 3.45 10.94 10.94 0 0 1-6.93 1.45c0 .68 0 1.36-.03 2.05 10.87 10.87 0 0 0 18.74-8.46 11.13 11.13 0 0 0 1.17-6.68z"/></svg></a></li>
                 <li><a href="#" aria-label="Follow us on Facebook"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.97 3.66 9.11 8.44 9.86v-7H7.07v-2.86h3.37V9.76c0-3.31 1.99-5.12 4.92-5.12 1.43 0 2.67.11 3.04.16v3.36h-2.09c-1.6 0-1.91.77-1.91 1.88v2.46h3.31l-.53 2.86h-2.78v7h5.32c4.78-.75 8.44-4.89 8.44-9.86z"/></svg></a></li>
-                <li><a href="#" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771.997 4.889 1.502.07.347.12.707.12 1.072v12.53c0 .365-.05.725-.12 1.072-.118.505-1.637 1.354-4.889 1.502-1.266.058-1.646.07-4.85.07-
+                <li><a href="#" aria-label="Follow us on Instagram"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771.997 4.889 1.502.07.347.12.707.12 1.072v12.53c0 .365-.05.725-.12 1.072-.118.505-1.637 1.354-4.889 1.502-1.266.058-1.646.07-4.85.07-3.204 0-3.584-.012-4.85-.07-3.252-.148-4.771-.997-4.889-1.502-.07-.347-.12-.707-.12-1.072V5.794c0-.365.05-.725.12-1.072.118-.505 1.637-1.354 4.889-1.502 1.266-.058 1.646-.07 4.85-.07m0 2.16c-1.176 0-1.587.006-2.157.036-2.527.138-4.264 1.235-4.384 1.86-.089.475-.14.969-.14 1.472v12.53c0 .503.051.997.14 1.472.119.625 1.857 1.723 4.384 1.86.57.03 1.981.036 2.157.036 1.176 0 1.587-.006 2.157-.036 2.527-.138 4.264-1.235 4.384-1.86.089-.475.14-.969.14-1.472V5.794c0-.503-.051-.997-.14-1.472-.119-.625-1.857-1.723-4.384-1.86-.57-.03-1.981-.036-2.157-.036z"/></svg></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const primaryNavigation = document.getElementById('primary-navigation');
+
+            mobileNavToggle.addEventListener('click', () => {
+                const isExpanded = primaryNavigation.getAttribute('aria-expanded') === 'true' || false;
+                primaryNavigation.setAttribute('aria-expanded', !isExpanded);
+                mobileNavToggle.classList.toggle('open');
+                primaryNavigation.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
