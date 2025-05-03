@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
+    <title>Sign Up</title>
     <style>
         body {
             background-image: url("https://img.freepik.com/free-vector/abstract-classic-blue-background-theme_23-2148415646.jpg");
@@ -54,76 +54,62 @@
         }
         .sign {
             width: 100px;
-            height: 20px;
+            height: 30px;
             background-color: rgba(41, 88, 62, 0.558);
             border-radius: 20px;
             box-shadow: 0px 0px 5px white;
+            text-align: center;
+            line-height: 30px;
         }
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                margin: 60px auto;
-                padding: 15px;
-            }
-            .c1, .c2 {
-                width: 100%;
-                align-items: center;
-            }
-            .c1 input, .c2 input {
-                max-width: 100%;
-            }
-        }
-        @media (max-width: 480px) {
-            .container {
-                margin: 20px auto;
-                padding: 10px;
-            }
-            .c1, .c2 {
-                padding: 10px;
-            }
-            .sign {
-                width: 80px;
-                height: 30px;
-            }
-            .c1 input, .c2 input {
-                height: 25px;
-            }
+        .sign button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <center>
-        <div class="container">
-            <div class="c1">
-                <div><h1>Sign Up</h1></div>
-                <div><input type="text" placeholder="Full Name"></div>
-                <div><input type="text" placeholder="Email"></div>
-                <div><input type="password" placeholder="Password"></div>
-                <div><input type="password" placeholder="Confirm Password"></div>
+        <form onsubmit="return validateForm()">
+            <div class="container">
+                <div class="c1">
+                    <div><h1>Sign Up</h1></div>
+                    <div><input type="text" id="fullName" placeholder="Full Name"></div>
+                    <div><input type="text" id="email" placeholder="Email"></div>
+                    <div><input type="password" id="password" placeholder="Password"></div>
+                    <div><input type="password" id="confirmPassword" placeholder="Confirm Password"></div>
+                </div>
+                <div class="c2">
+                    <div class="sign"><button type="submit">Sign Up</button></div>
+                    <div id="a">Already have an account?<a href="login.html"><b> Log In</b></a><br> Or</div>
+                    <div id="s"><input type="text" placeholder="Sign up with Google"></div>
+                    <div id="s"><input type="text" placeholder="Sign up with Facebook"></div>
+                </div>
             </div>
-            <div class="c2">
-                <div class="sign"><a href="homepage.html"><b>Sign Up</b></a></div>
-                <div id="a">Already have an account?<a href="login.html"><b> Log In</b></a><br> Or</div>
-                <div id="s"><input type="text" placeholder="Sign up with Google"></div>
-                <div id="s"><input type="text" placeholder="Sign up with Facebook"></div>
-            </div>
-        </div>
+        </form>
     </center>
+
     <script>
         function validateForm() {
             var fullName = document.getElementById("fullName").value;
             var email = document.getElementById("email").value;
             var password = document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
-            if (fullName == "" || email == "" || password == "" || confirmPassword == "") {
+
+            if (fullName === "" || email === "" || password === "" || confirmPassword === "") {
                 alert("All fields must be filled out.");
                 return false;
             }
+
             if (password !== confirmPassword) {
                 alert("Passwords do not match.");
                 return false;
             }
-            alert("Form submitted successfully!"); 
+
+            window.location.href = "homepage.html"; // Redirects to homepage upon successful sign-up
+            return false; // Prevents default form submission
         }
     </script>
 </body>
